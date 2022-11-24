@@ -11,11 +11,16 @@ def Home(request):
 
 def MedicosVista(request):
 
+    #creamos una variable para controlar la
+    #ejec de la alerta
+    lanzandoAlerta=False
+
     #Debo utilizar la clase formularioMedico
     #CREAMOS ASI UN OBJETO
     formulario=FormularioMedico()
     diccionario={
-        "formulario":formulario
+        "formulario":formulario,
+        "bandera":lanzandoAlerta
     }
 
     #ACTIVAR LA RECEPCION DE DATOS
@@ -37,7 +42,7 @@ def MedicosVista(request):
                 sede=datos["sede"]
             )
             medicoNuevo.save()
-            print("exito en la operacion")
+            diccionario["bandera"]=True
            
 
 
